@@ -6,7 +6,7 @@
 
 
 #define FORMAT(x) _Generic((x), \
-    char: "'%c'", \
+    char: "%c", \
     signed char: "%hhd", \
     unsigned char: "%hhu", \
     short: "%hd", \
@@ -20,17 +20,19 @@
     float: "%f", \
     double: "%f", \
     long double: "%Lf", \
-    char *: "\"%s\"", \
-    const char *: "\"%s\"", \
+    char *: "%s", \
+    const char *: "%s", \
     void *: "%p", \
     default: "%p" \
 )
+
+#define PRINT_EXPR(expr) #expr, expr
 
 
 #define ASSERT(CONDITION) \
     do { \
         if (!(CONDITION)) { \
-            fprintf(stderr, "ASSERTION FAILED AT %s:%d | %s\n", __FILE__, __LINE__, #CONDITION); \
+            fprintf(stderr, "ASSERTION FAILED AT %s:%d | %s\n", __FILE__, __LINE__, PRINT_EXPR(CONDITION)); \
             exit(EXIT_FAILURE); \
         } \
     } while (0)
