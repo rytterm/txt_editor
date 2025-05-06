@@ -60,6 +60,12 @@ char* read(file_t* file) {
 }
 
 
-void write(file_t* file) {
+void write(file_t* file, char* msg, size_t size) {
+    ASSERT(file->state == INSERT_STATE);
+    
+    file->file = fopen(file->name,"a");
+    ASSERT(file->file != NULL);
 
+    fwrite(msg, sizeof(char), size, file->file);
+    fclose(file->file);
 }

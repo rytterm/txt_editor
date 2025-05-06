@@ -15,6 +15,8 @@ struct File {
 };
 
 
+
+
 typedef struct File file_t;
 
 
@@ -23,6 +25,6 @@ void fdelete(file_t* file);
 void open(file_t* file, const char* mode);
 void close(file_t* file);
 char* read(file_t* file);
-void write(file_t* file);
+void write(file_t* file, char* msg, size_t size);
 
 #endif

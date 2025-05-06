@@ -8,6 +8,7 @@
 #include <string.h>
 
 
-char* get(int state);
+char* get();
+char get_c();
 
 #endif

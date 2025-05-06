@@ -2,9 +2,7 @@
 
 
 
-char* get(int state) {
-    ASSERT(state == INSERT_STATE);
-    
+char* get() {
     char* txt;
     char buffer[256];
 
@@ -16,5 +14,12 @@ char* get(int state) {
 
     strcpy(txt,buffer);
 
+    return txt;
+}
+
+
+char get_c() {
+    char txt;
+    scanf("%c", &txt);
     return txt;
 }
