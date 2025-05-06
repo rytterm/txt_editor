@@ -22,7 +22,8 @@ int main(int argc, char** argv) {
         char c[1]; 
         c[0] = _getch();
         write(&file,c,1);
-        if (c == 27) {
+        printf("%c",c[0]);
+        if (c[0] == 27) {
             default_state(&file);
         }
     }
