@@ -7,11 +7,22 @@
 #include <stdlib.h>
 #include <errno.h>
 
-void create(int state,char* name);
-void fdelete(int state,char* name);
-void open(int state,char* name);
-void close(int state,char* name);
-void read(int state,char* name);
-void write(int state,char* name);
+
+struct File {
+    FILE* file;
+    char* name;
+    int state;
+};
+
+
+typedef struct File file_t;
+
+
+void create(file_t* file, char* name);
+void fdelete(file_t* file);
+void open(file_t* file, const char* mode);
+void close(file_t* file);
+char* read(file_t* file);
+void write(file_t* file);
 
 #endif

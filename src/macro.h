@@ -26,19 +26,9 @@
     default: "%p" \
 )
 
-#define PRINT_EXPR(expr) #expr, expr
+#define PRINT_EXPR(EXPR) #EXPR, EXPR
 
-
-#define ASSERT(CONDITION) \
-    do { \
-        if (!(CONDITION)) { \
-            fprintf(stderr, "ASSERTION FAILED AT %s:%d | %s\n", __FILE__, __LINE__, PRINT_EXPR(CONDITION)); \
-            exit(EXIT_FAILURE); \
-        } \
-    } while (0)
-
-
-#define ARGUMENTS "ISR"
+#define ASSERT(EXPR) (EXPR ? (void)0 : (fprintf(stderr, "ASSERTION FAILED AT %s:%d | %s\n", __FILE__, __LINE__, PRINT_EXPR(EXPR)), exit(EXIT_FAILURE)))
 
 
 
